@@ -8,6 +8,9 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { LoginModule } from '../app/login/login.module';
+import { EffectsModule } from '@ngrx/effects';
+import { EffectEffects } from './effects/effect.effects';
+
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { LoginModule } from '../app/login/login.module';
     AppRoutingModule,
     LoginModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : []
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([EffectEffects]),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
